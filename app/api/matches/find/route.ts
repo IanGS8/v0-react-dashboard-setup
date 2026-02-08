@@ -27,7 +27,7 @@ function calculateComplementarity(
   return Math.round((complementScore / maxPossible) * 100);
 }
 
-export async function POST() {
+export async function GET() {
   const supabase = await createClient();
   const {
     data: { user },
@@ -51,32 +51,50 @@ export async function POST() {
     );
   }
 
-  // Get all other users' competencies
+  // Get all other users' competencies with their profiles
   const { data: allComps } = await supabase
     .from("competencies")
-    .select("*, profiles(id, display_name, avatar_url, level, xp)")
+    .select("*, profiles!inner(id, display_name, avatar_url, level, xp, course, semester)")
     .neq("user_id", user.id);
 
   if (!allComps || allComps.length === 0) {
     return NextResponse.json({ matches: [] });
   }
 
-  // Calculate complementarity for each
-  const scored = allComps.map((comp) => ({
-    profile: comp.profiles,
-    competencies: {
-      comunicacao: comp.comunicacao,
-      pensamento_critico: comp.pensamento_critico,
-      resolucao_problemas: comp.resolucao_problemas,
-      colaboracao: comp.colaboracao,
-      criatividade: comp.criatividade,
-      gestao_tempo: comp.gestao_tempo,
-    },
-    score: calculateComplementarity(myComp, comp),
-  }));
+  const LABELS: Record<string, string> = {
+    comunicacao: "Comunicacao",
+    pensamento_critico: "Pensamento Critico",
+    resolucao_problemas: "Resolucao de Problemas",
+    colaboracao: "Colaboracao",
+    criatividade: "Criatividade",
+    gestao_tempo: "Gestao do Tempo",
+  };
+  const KEYS = Object.keys(LABELS);
 
-  // Sort by score descending and take top 10
-  scored.sort((a, b) => b.score - a.score);
+  // Calculate complementarity and build response matching MatchCard interface
+  const scored = allComps.map((comp: any) => {
+    const profile = comp.profiles;
+    const compValues: Record<string, number> = {};
+    for (const k of KEYS) compValues[k] = comp[k] ?? 5;
+
+    const sorted = KEYS.slice().sort((a, b) => compValues[b] - compValues[a]);
+    const strengths = sorted.slice(0, 3).map((k) => LABELS[k]);
+    const weaknesses = sorted.slice(-3).map((k) => LABELS[k]);
+
+    return {
+      id: profile.id,
+      display_name: profile.display_name,
+      course: profile.course ?? null,
+      semester: profile.semester ?? null,
+      xp: profile.xp ?? 0,
+      level: profile.level ?? 1,
+      score: calculateComplementarity(myComp, comp) / 100,
+      strengths,
+      weaknesses,
+    };
+  });
+
+  scored.sort((a: any, b: any) => b.score - a.score);
   const topMatches = scored.slice(0, 10);
 
   return NextResponse.json({ matches: topMatches });

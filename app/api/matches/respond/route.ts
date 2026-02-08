@@ -11,16 +11,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Nao autenticado" }, { status: 401 });
   }
 
-  const { matchId, status } = await request.json();
+  const { match_id, accept } = await request.json();
 
-  if (!matchId || !["accepted", "declined"].includes(status)) {
+  if (!match_id || typeof accept !== "boolean") {
     return NextResponse.json({ error: "Dados invalidos" }, { status: 400 });
   }
+
+  const status = accept ? "accepted" : "declined";
 
   const { data, error } = await supabase
     .from("matches")
     .update({ status })
-    .eq("id", matchId)
+    .eq("id", match_id)
     .eq("partner_id", user.id)
     .select()
     .single();
