@@ -32,10 +32,12 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      console.log("[v0] Login attempt for:", email);
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
+      console.log("[v0] Login result - error:", error?.message, "session:", !!data?.session);
       if (error) throw error;
       router.push("/dashboard");
       router.refresh();
