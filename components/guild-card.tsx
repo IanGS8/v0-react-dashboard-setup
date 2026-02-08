@@ -19,7 +19,7 @@ interface Guild {
   focus_area: string;
   member_count: number;
   is_member: boolean;
-  created_by: string;
+  owner_id: string;
 }
 
 export function GuildCard({

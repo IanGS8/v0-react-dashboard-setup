@@ -46,7 +46,7 @@ export default function SignUpPage() {
     }
 
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -59,7 +59,14 @@ export default function SignUpPage() {
         },
       });
       if (error) throw error;
-      router.push("/auth/sign-up-success");
+
+      // If a session is returned, email confirmation is disabled - go straight to dashboard
+      if (data.session) {
+        router.push("/dashboard");
+      } else {
+        // Email confirmation is still enabled - show success page
+        router.push("/auth/sign-up-success");
+      }
     } catch (error: unknown) {
       setError(
         error instanceof Error
