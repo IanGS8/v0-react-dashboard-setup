@@ -24,12 +24,12 @@ import {
 import { Plus, Loader2 } from "lucide-react";
 
 const FOCUS_AREAS = [
-  { value: "comunicacao", label: "Comunicacao" },
-  { value: "pensamento_critico", label: "Pensamento Critico" },
-  { value: "resolucao_problemas", label: "Resolucao de Problemas" },
-  { value: "colaboracao", label: "Colaboracao" },
-  { value: "criatividade", label: "Criatividade" },
-  { value: "gestao_tempo", label: "Gestao do Tempo" },
+  { value: "matematica", label: "Matematica" },
+  { value: "portugues", label: "Portugues" },
+  { value: "historia", label: "Historia" },
+  { value: "geografia", label: "Geografia" },
+  { value: "fisica", label: "Fisica" },
+  { value: "quimica", label: "Quimica" },
 ];
 
 export function CreateGuildDialog({
@@ -78,7 +78,7 @@ export function CreateGuildDialog({
         <DialogHeader>
           <DialogTitle className="font-display">Criar Nova Guilda</DialogTitle>
           <DialogDescription>
-            Crie um grupo de estudos focado em uma competencia especifica.
+            Crie um grupo de estudos focado em uma materia especifica.
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
@@ -86,7 +86,7 @@ export function CreateGuildDialog({
             <Label htmlFor="guild-name">Nome da Guilda</Label>
             <Input
               id="guild-name"
-              placeholder="Ex: Mestres da Comunicacao"
+              placeholder="Ex: Mestres da Matematica"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -95,7 +95,7 @@ export function CreateGuildDialog({
             <Label htmlFor="guild-focus">Area de Foco</Label>
             <Select value={focusArea} onValueChange={setFocusArea}>
               <SelectTrigger>
-                <SelectValue placeholder="Selecione uma competencia" />
+                <SelectValue placeholder="Selecione uma materia" />
               </SelectTrigger>
               <SelectContent>
                 {FOCUS_AREAS.map((area) => (

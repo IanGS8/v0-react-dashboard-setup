@@ -43,21 +43,21 @@ export function GuildCard({
   }
 
   const focusColors: Record<string, string> = {
-    comunicacao: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/30",
-    pensamento_critico: "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/30",
-    resolucao_problemas: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/30",
-    colaboracao: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
-    criatividade: "bg-pink-500/10 text-pink-700 dark:text-pink-400 border-pink-500/30",
-    gestao_tempo: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
+    matematica: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/30",
+    portugues: "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/30",
+    historia: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
+    geografia: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
+    fisica: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/30",
+    quimica: "bg-pink-500/10 text-pink-700 dark:text-pink-400 border-pink-500/30",
   };
 
   const focusLabels: Record<string, string> = {
-    comunicacao: "Comunicacao",
-    pensamento_critico: "Pensamento Critico",
-    resolucao_problemas: "Resolucao de Problemas",
-    colaboracao: "Colaboracao",
-    criatividade: "Criatividade",
-    gestao_tempo: "Gestao do Tempo",
+    matematica: "Matematica",
+    portugues: "Portugues",
+    historia: "Historia",
+    geografia: "Geografia",
+    fisica: "Fisica",
+    quimica: "Quimica",
   };
 
   return (

@@ -13,7 +13,7 @@ const _spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Construindo a Sabedoria",
   description:
-    "Plataforma gamificada de aprendizagem colaborativa. Descubra suas competencias, encontre parceiros de estudo e evolua em guildas.",
+    "Plataforma gamificada de aprendizagem colaborativa. Descubra suas materias fortes, encontre parceiros de estudo e evolua em guildas.",
 };
 
 export const viewport: Viewport = {

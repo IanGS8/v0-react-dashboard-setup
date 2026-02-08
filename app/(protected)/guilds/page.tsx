@@ -28,7 +28,7 @@ export default function GuildsPage() {
             Guildas
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Junte-se a grupos de estudo focados em competencias especificas.
+            Junte-se a grupos de estudo focados em materias especificas.
           </p>
         </div>
         <CreateGuildDialog onCreated={() => mutate()} />

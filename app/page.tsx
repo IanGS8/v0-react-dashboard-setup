@@ -38,7 +38,7 @@ export default function LandingPage() {
             Plataforma Gamificada de Aprendizagem
           </div>
           <h1 className="max-w-3xl text-balance font-display text-4xl font-bold tracking-tight text-foreground md:text-6xl">
-            Aprenda mais, junto. Evolua suas competencias.
+            Aprenda mais, junto. Evolua suas notas.
           </h1>
           <p className="max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
             Descubra seus pontos fortes, encontre parceiros complementares e
@@ -70,8 +70,8 @@ export default function LandingPage() {
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               <FeatureCard
                 icon={<Target className="h-6 w-6" />}
-                title="Radar de Competencias"
-                description="Visualize e acompanhe 6 competencias essenciais em um grafico radar interativo."
+                title="Radar de Materias"
+                description="Visualize e acompanhe suas notas em 6 materias do ensino medio em um grafico radar interativo."
               />
               <FeatureCard
                 icon={<Users className="h-6 w-6" />}
@@ -98,7 +98,7 @@ export default function LandingPage() {
           </h2>
           <p className="max-w-md text-muted-foreground">
             Junte-se a milhares de estudantes que ja estao evoluindo suas
-            competencias de forma colaborativa.
+            materias de forma colaborativa.
           </p>
           <Button size="lg" asChild>
             <Link href="/auth/sign-up">

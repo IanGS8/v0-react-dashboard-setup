@@ -46,7 +46,7 @@ export async function GET() {
 
   if (!myComp) {
     return NextResponse.json(
-      { error: "Competencias nao encontradas" },
+      { error: "Notas nao encontradas" },
       { status: 404 },
     );
   }

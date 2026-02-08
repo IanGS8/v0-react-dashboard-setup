@@ -88,8 +88,8 @@ export default function MatchesPage() {
                 Descubra seus matches
               </h3>
               <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-                Nosso algoritmo analisa suas competencias e encontra colegas cujas
-                habilidades complementam as suas.
+                Nosso algoritmo analisa suas notas e encontra colegas cujas
+                materias fortes complementam as suas.
               </p>
             </div>
           )}
@@ -101,7 +101,7 @@ export default function MatchesPage() {
                 Nenhum match encontrado
               </h3>
               <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-                Preencha suas competencias no Dashboard para que possamos encontrar
+                Preencha suas notas no Dashboard para que possamos encontrar
                 parceiros ideais para voce.
               </p>
             </div>
