@@ -6,12 +6,12 @@ function calculateComplementarity(
   theirs: Record<string, number>,
 ): number {
   const keys = [
-    "comunicacao",
-    "pensamento_critico",
-    "resolucao_problemas",
-    "colaboracao",
-    "criatividade",
-    "gestao_tempo",
+    "matematica",
+    "portugues",
+    "historia",
+    "geografia",
+    "fisica",
+    "quimica",
   ];
 
   let complementScore = 0;
@@ -62,12 +62,12 @@ export async function GET() {
   }
 
   const LABELS: Record<string, string> = {
-    comunicacao: "Comunicacao",
-    pensamento_critico: "Pensamento Critico",
-    resolucao_problemas: "Resolucao de Problemas",
-    colaboracao: "Colaboracao",
-    criatividade: "Criatividade",
-    gestao_tempo: "Gestao do Tempo",
+    matematica: "Matematica",
+    portugues: "Portugues",
+    historia: "Historia",
+    geografia: "Geografia",
+    fisica: "Fisica",
+    quimica: "Quimica",
   };
   const KEYS = Object.keys(LABELS);
 

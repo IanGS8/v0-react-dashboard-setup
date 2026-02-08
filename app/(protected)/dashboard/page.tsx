@@ -39,21 +39,21 @@ export default async function DashboardPage() {
     .eq("user_id", user.id);
 
   const comp = competencies ?? {
-    comunicacao: 5,
-    pensamento_critico: 5,
-    resolucao_problemas: 5,
-    colaboracao: 5,
-    criatividade: 5,
-    gestao_tempo: 5,
+    matematica: 5,
+    portugues: 5,
+    historia: 5,
+    geografia: 5,
+    fisica: 5,
+    quimica: 5,
   };
 
   const avgScore = Math.round(
-    (comp.comunicacao +
-      comp.pensamento_critico +
-      comp.resolucao_problemas +
-      comp.colaboracao +
-      comp.criatividade +
-      comp.gestao_tempo) /
+    (comp.matematica +
+      comp.portugues +
+      comp.historia +
+      comp.geografia +
+      comp.fisica +
+      comp.quimica) /
       6,
   );
 
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
           {profile?.display_name || "Estudante"}!
         </h1>
         <p className="text-sm text-muted-foreground">
-          Acompanhe seu progresso e evolua suas competencias.
+          Acompanhe seu progresso e evolua suas notas.
         </p>
       </div>
 
@@ -78,7 +78,7 @@ export default async function DashboardPage() {
         />
         <StatCard
           icon={<Target className="h-4 w-4" />}
-          label="Media de Competencias"
+          label="Media Geral"
           value={`${avgScore}/10`}
         />
         <StatCard
@@ -105,7 +105,7 @@ export default async function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle className="font-display">
-              Radar de Competencias
+              Radar de Materias
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle className="font-display">
-              Editar Competencias
+              Avaliar Materias
             </CardTitle>
           </CardHeader>
           <CardContent>

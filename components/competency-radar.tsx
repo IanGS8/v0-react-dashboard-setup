@@ -10,21 +10,21 @@ import {
 } from "recharts";
 
 export interface Competencies {
-  comunicacao: number;
-  pensamento_critico: number;
-  resolucao_problemas: number;
-  colaboracao: number;
-  criatividade: number;
-  gestao_tempo: number;
+  matematica: number;
+  portugues: number;
+  historia: number;
+  geografia: number;
+  fisica: number;
+  quimica: number;
 }
 
 const LABELS: Record<keyof Competencies, string> = {
-  comunicacao: "Comunicacao",
-  pensamento_critico: "Pensamento Critico",
-  resolucao_problemas: "Resolucao de Problemas",
-  colaboracao: "Colaboracao",
-  criatividade: "Criatividade",
-  gestao_tempo: "Gestao do Tempo",
+  matematica: "Matematica",
+  portugues: "Portugues",
+  historia: "Historia",
+  geografia: "Geografia",
+  fisica: "Fisica",
+  quimica: "Quimica",
 };
 
 export function CompetencyRadar({
@@ -52,7 +52,7 @@ export function CompetencyRadar({
           tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 10 }}
         />
         <Radar
-          name="Competencias"
+          name="Materias"
           dataKey="value"
           stroke="hsl(var(--primary))"
           fill="hsl(var(--primary))"

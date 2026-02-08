@@ -9,12 +9,12 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
 const COMPETENCY_LABELS: Record<keyof Competencies, string> = {
-  comunicacao: "Comunicacao",
-  pensamento_critico: "Pensamento Critico",
-  resolucao_problemas: "Resolucao de Problemas",
-  colaboracao: "Colaboracao",
-  criatividade: "Criatividade",
-  gestao_tempo: "Gestao do Tempo",
+  matematica: "Matematica",
+  portugues: "Portugues",
+  historia: "Historia",
+  geografia: "Geografia",
+  fisica: "Fisica",
+  quimica: "Quimica",
 };
 
 export function CompetencyEditor({
@@ -72,7 +72,7 @@ export function CompetencyEditor({
         ),
       )}
       <Button onClick={handleSave} disabled={isPending} className="mt-2">
-        {isPending ? "Salvando..." : saved ? "Salvo!" : "Salvar Competencias"}
+        {isPending ? "Salvando..." : saved ? "Salvo!" : "Salvar Notas"}
       </Button>
     </div>
   );
