@@ -32,18 +32,14 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      console.log("[v0] Attempting login with email:", email);
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-      console.log("[v0] Login response - data:", data, "error:", error);
       if (error) throw error;
-      console.log("[v0] Login successful, redirecting to /dashboard");
       router.push("/dashboard");
       router.refresh();
     } catch (error: unknown) {
-      console.log("[v0] Login error:", error);
       setError(
         error instanceof Error ? error.message : "Ocorreu um erro ao entrar.",
       );

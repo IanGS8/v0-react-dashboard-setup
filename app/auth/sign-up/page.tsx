@@ -46,8 +46,7 @@ export default function SignUpPage() {
     }
 
     try {
-      console.log("[v0] Attempting sign-up with email:", email, "displayName:", displayName);
-      const { data, error } = await supabase.auth.signUp({
+      const { error: signUpError } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -59,17 +58,17 @@ export default function SignUpPage() {
           },
         },
       });
-      console.log("[v0] Sign-up response - session:", data.session, "user:", data.user, "error:", error);
-      if (error) throw error;
+      if (signUpError) throw signUpError;
 
-      if (data.session) {
-        console.log("[v0] Session exists, redirecting to /dashboard");
-        router.push("/dashboard");
-        router.refresh();
-      } else {
-        console.log("[v0] No session (email confirm enabled), going to success page");
-        router.push("/auth/sign-up-success");
-      }
+      // Auto-login after sign-up (email is auto-confirmed via DB trigger)
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (signInError) throw signInError;
+
+      router.push("/dashboard");
+      router.refresh();
     } catch (error: unknown) {
       setError(
         error instanceof Error
